@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gift😁</title>
+</head>
+<body>
+    <!-- <div class="snow"></div> -->
+<div id="merrywrap" class="merrywrap">
+    <div class="giftbox">
+      <div class="cover">
+        <div class="cover-knot"></div>
+      </div>
+     <div class="box"></div>
+    </div>
+    <div class="icons">
+      <div class="row">
+      </div>
+    </div>
+  </div>
+  <style>
+    body {
+  background: url("bg.png");
+  background-size: cover;
+      margin: 0;
+    overflow:hidden;
+  
+}
+
+.merrywrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 400px;
+  min-height: 490px;
+  transform: translate(-50%, -50%);
+}
+.giftbox {
+  position: absolute;
+  width: 300px;
+  height: 210px;
+  top: 200px;
+  left: 50%;
+  margin-left: -150px;
+  bottom: 0;
+  z-index: 10;
+  cursor: pointer;
+
+
+  &:hover {
+    animation: 2s wiggle infinite linear;
+  }
+
+  & > div {
+    background: linear-gradient(#e00165, #e00165);
+    position: absolute;
+    &:after,
+    &:before {
+      position: absolute;
+      content: "";
+      top: 0;
+    }
+  }
+  &:after {
+    display: none;
+    position: absolute;
+    color: #fff;
+    width: 100%;
+    content: "Click Me!";
+    left: 0;
+    bottom: 0;
+    font-size: 24px;
+    text-align: center;
+    transform: rotate(-20deg);
+    transform-origin: 0 0;
+  }
+
+  .step-2 &,
+  .step-3 & {
+    animation: none;
+    cursor: default;
+  }
+
+  .cover {
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 25%;
+    z-index: 2;
+    transform-origin: left;
+
+    &:before {
+      position: absolute;
+      height: 100%;
+      left: 50%;
+      width: 50px;
+      transform: translateX(-50%);
+      background:#04b2f7;
+    }
+    & > div {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      left: 50%;
+      top: -50px;
+      transform: translateX(-50%);
+      &:before,
+      &:after {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        content: "";
+        box-shadow: inset 0 0 0 15px #04b2f7;
+        border-radius: 30px;
+        transform-origin: 50% 100%;
+      }
+      &:before {
+        transform: translateX(-45%) skewY(40deg);
+      }
+      &:after {
+        transform: translateX(45%) skewY(-40deg);
+      }
+    }
+  }
+
+  .box {
+    right: 5%;
+    left: 5%;
+    height: 80%;
+    bottom: 0;
+    &:before {
+      width: 50px;
+      height: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background:#04b2f7;
+    }
+    &:after {
+      width: 100%;
+      height: 30px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.step-1,
+.step-2,
+.step-3 {
+  .giftbox::after {
+    display: none;
+  }
+}
+
+.icons {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  max-width: 353px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+  white-space: nowrap;
+  font-family: sans-serif;
+  font-weight: bold;
+
+  .row {
+    width: 100%;
+    text-align: center;
+
+    span {
+      color: #1d1e22;
+      text-shadow: 0px 0px 10px #fff;
+      font-size: 60px;
+      display: inline-block;
+      opacity: 0;
+      min-width: 20px;
+      transition: transform 0.5s ease-in, opacity 0.7s;
+    }
+  }
+}
+
+.step-1 {
+  .giftbox {
+    animation: wobble 0.5s linear infinite forwards;
+  }
+  .cover {
+    animation: wobble 0.5s linear infinite 0.1s forwards;
+  }
+  .icons .row span {
+    opacity: 1;
+  }
+}
+
+.step-3 .giftbox,
+.step-4 .giftbox {
+   opacity: 0;
+  z-index: 1;
+  animation-fill-mode: forwards;
+  &:after {
+    opacity: 0;
+  }
+}
+
+.step-2,
+.step-3 {
+  .giftbox {
+    .cover {
+      animation: flyUp 0.4s cubic-bezier(0.55, 0.09, 0.68, 0.53) forwards;
+    }
+    .box {
+      animation: flyDown 0.2s ease-in 0.05s forwards;
+      
+    }
+  }
+}
+
+.step-1 .icons .row span {
+  opacity: 0;
+}
+
+.step-3 .icons .row span {
+  opacity: 1;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 0.91);
+  animation: wobble 0.6s linear infinite forwards;
+
+  &:nth-child(even) {
+    animation-duration: 0.7s;
+  }
+}
+
+@keyframes wiggle {
+  0% {
+    transform: translate(-5px);
+  }
+
+  5% {
+    transform: translate(5px);
+  }
+
+  10% {
+    transform: translate(-5px);
+  }
+
+  15% {
+    transform: translate(5px);
+  }
+
+  20% {
+    transform: translate(-5px);
+  }
+
+  25% {
+    transform: translate(0);
+  }
+}
+
+@keyframes wobble {
+  25% {
+    transform: rotate(4deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+}
+@keyframes flyUp {
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-35px, 85px) rotate(-110deg);
+  }
+}
+@keyframes flyDown {
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 1;
+  }
+  
+}
+
+
+
+
+ Generate the snow image using radial gradients
+
+
+
+
+html {
+  height: 100%;
+  background: linear-gradient(#123 30%, #667);
+  overflow: hidden;
+}
+.snow,
+.snow:before,
+
+</style>
+<script>
+    const audio = new Audio();
+    audio.src = "athula.mp3";
+    window.onload = function () {
+  var merrywrap = document.getElementById("merrywrap");
+  var box = merrywrap.getElementsByClassName("giftbox")[0];
+  var step = 1;
+  var stepMinutes = [2000, 600, 1000, 1000];
+
+  function init(message = "Your message") {
+    box.addEventListener("click", openBox, false);
+
+    const text = document.querySelector(".icons .row");
+    message.split("").forEach((letter) => {
+      const letterSpan = document.createElement("span");
+      letterSpan.innerText = letter;
+      text.appendChild(letterSpan);
+    });
+  }
+  function stepClass(step) {
+    // merrywrap.className = "merrywrap";
+    merrywrap.className = "merrywrap step-" + step;
+  }
+  function openBox() {
+    if (step === 1) {
+      box.removeEventListener("click", openBox, false);
+      
+    }
+    stepClass(step);
+
+    if (step === 2) {
+      audio.play();
+      return;
+      
+    }
+    setTimeout(openBox, stepMinutes[step - 1]);
+    step++;
+  }
+  
+  init("Mon projet");
+};
+
+</script>
+</body>
+</html>
